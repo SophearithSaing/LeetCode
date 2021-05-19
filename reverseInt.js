@@ -4,7 +4,6 @@ var reverse = function (x) {
         x = -x
         negative = true;
     }
-    console.log(x)
     let currentMod = x % 10;
     let reverse = currentMod;
     x = Math.floor(x / 10);
@@ -12,15 +11,14 @@ var reverse = function (x) {
         currentMod = x % 10;
         x = Math.floor(x / 10);
         reverse = reverse * 10 + currentMod;
-        console.log(x, currentMod, reverse);
     }
-    while (reverse % 10 === 0) {
-        reverse = Math.floor(reverse / 10);
+    if (reverse > 2**31-1) {
+        return 0;
     }
     if (negative) {
         reverse = -reverse;
     }
-    return console.log(reverse);
+    return reverse;
 };
 
 reverse(-123);
