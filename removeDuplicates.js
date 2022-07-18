@@ -1,19 +1,33 @@
 // var removeDuplicates = function (array) {
+    // for (let i = 0; i < array.length; i++) {
+    //     for (let j = 0; j < array.length; j++) {
+    //         while (array[i] === array[j] && i !== j) {
+    //             array.splice(j, 1);
+    //         }
+    //     }
+    // }
+    // return array.length;
+// };
+
+// Faster solution
+// var removeDuplicates = function (array) {
 //     for (let i = 0; i < array.length; i++) {
-//         for (let j = 0; j < array.length; j++) {
-//             while (array[i] === array[j] && i !== j) {
-//                 array.splice(j, 1);
-//             }
+//         while (array[i] === array[i + 1]) {
+//             array.splice(i + 1, 1);
 //         }
 //     }
 //     return array.length;
 // };
 
-// Faster solution
-var removeDuplicates = function (array) {
+// Hash maps solution
+const removeDuplicates = function (array) {
+    const maps = {};
     for (let i = 0; i < array.length; i++) {
-        while (array[i] === array[i + 1]) {
-            array.splice(i + 1, 1);
+        if (maps[array[i]]) {
+            array.splice(i, 1);
+            i--;
+        } else {
+            maps[array[i]] = true;
         }
     }
     return array.length;
