@@ -1,6 +1,5 @@
 var longestCommonPrefix = function (strs) {
     let result = '';
-    console.log(strs[0]);
     if (strs.length === 1) {
         return strs[0];
     }
